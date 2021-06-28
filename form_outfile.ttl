@@ -1,0 +1,65 @@
+@prefix FORM: <http://www.example.org/ns/form#> .
+@prefix PROV: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/lda> a PROV:entity ;
+    FORM:type "model" ;
+    PROV:activity "Create Model" ;
+    PROV:generatedAtTime "2021-06-24T14:00:41.592422"^^xsd:dateTime ;
+    PROV:used <http://example.org/sklearn>,
+        <http://example.org/tfidf_vector> .
+
+<http://example.org/count> a PROV:activity ;
+    FORM:type "alist" ;
+    PROV:activity "Count Terms" ;
+    PROV:endedAtTime "2021-06-24T14:00:41.514817"^^xsd:dateTime ;
+    PROV:startedAtTime "2021-06-24T14:00:41.514368"^^xsd:dateTime ;
+    PROV:used <http://example.org/ngrams> .
+
+<http://example.org/csv/enmi> a PROV:entity ;
+    FORM:type "tabular" ;
+    PROV:entity "enmi.csv" ;
+    PROV:generatedAtTime "2021-06-24T14:00:41.430816"^^xsd:dateTime ;
+    PROV:wasDerivedFrom <http://example.org/enmi>,
+        <http://example.org/twitter> .
+
+<http://example.org/ngram_df> a PROV:entity ;
+    FORM:type "alist" ;
+    PROV:activity "Ranked Count" ;
+    PROV:generatedAtTime "2021-06-24T14:00:41.549056"^^xsd:dateTime ;
+    PROV:used <http://example.org/rank> .
+
+<http://example.org/ngrams> a PROV:activity ;
+    FORM:type "alist" ;
+    PROV:activity "Fit to Vector" ;
+    PROV:endedAtTime "2021-06-24T14:00:41.506818"^^xsd:dateTime ;
+    PROV:startedAtTime "2021-06-24T14:00:41.501714"^^xsd:dateTime ;
+    PROV:used <http://example.org/strip> .
+
+<http://example.org/rank> a PROV:activity ;
+    FORM:type "alist" ;
+    PROV:activity "Fit to Vector" ;
+    PROV:endedAtTime "2021-06-24T14:00:41.530266"^^xsd:dateTime ;
+    PROV:startedAtTime "2021-06-24T14:00:41.527830"^^xsd:dateTime ;
+    PROV:used <http://example.org/count> .
+
+<http://example.org/stopwords> FORM:type "alist" ;
+    PROV:entity "stopwords" ;
+    PROV:generatedAtTime "2021-06-24T14:00:41.419349"^^xsd:dateTime ;
+    PROV:used <http://example.org/nltk> .
+
+<http://example.org/strip> a PROV:activity ;
+    FORM:type "tabular" ;
+    PROV:activity "strip" ;
+    PROV:endedAtTime "2021-06-24T14:00:41.494184"^^xsd:dateTime ;
+    PROV:startedAtTime "2021-06-24T14:00:41.491816"^^xsd:dateTime ;
+    PROV:used <http://example.org/csv/enmi> .
+
+<http://example.org/tfidf_vector> a PROV:entity ;
+    FORM:type "vector" ;
+    PROV:activity "Vectorize Words" ;
+    PROV:generatedAtTime "2021-06-24T14:00:41.586161"^^xsd:dateTime ;
+    PROV:used <http://example.org/ngram_df>,
+        <http://example.org/sklearn>,
+        <http://example.org/stopwords> .
+

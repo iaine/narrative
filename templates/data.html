@@ -1,0 +1,11 @@
+<!doctype html>
+<script type=text/javascript src="{{
+  url_for('static', filename='js/forms.js') }}"></script>
+{% if templates %}
+  {% for template in templates %}
+    <div>{{ template }}</div>
+  {% endfor %} 
+  <div onclick="playSound({{forms}})">Play</div>
+{% else %}
+  <h1>Sorry there is no data</h1>
+{% endif %}
